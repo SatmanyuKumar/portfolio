@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Satmanyu Kumar — Java Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#0f1310;--bg-alt:#151c16;--bg-card:#1a2119;--border:#2b352c;--text:#edeae3;--text-dim:#9caa9d;--accent:#e8a33d;--accent-dim:#b8822f;--green:#6b8f71;--red:#c1666b;--mono:'JetBrains Mono',monospace;--sans:'Inter',sans-serif;--max-width:880px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+.wrap{max-width:var(--max-width);margin:0 auto;padding:0 24px}
+.nav{position:sticky;top:0;z-index:10;background:rgba(15,19,16,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:var(--max-width);margin:0 auto;padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-family:var(--mono);font-weight:700;font-size:15px}.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:24px;list-style:none;margin:0;padding:0;font-family:var(--mono);font-size:13px}
+.nav-links a{color:var(--text-dim);transition:color .15s ease}.nav-links a:hover{color:var(--accent)}
+@media(max-width:560px){.nav-links{gap:14px;font-size:11px}}
+.hero{padding:96px 0 64px}
+.terminal{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.terminal-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg-alt);border-bottom:1px solid var(--border)}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--border)}
+.terminal-title{margin-left:8px;font-family:var(--mono);font-size:12px;color:var(--text-dim)}
+.terminal-body{padding:28px 24px 32px;font-family:var(--mono)}
+.prompt-line{color:var(--text-dim);font-size:14px;margin-bottom:8px}.prompt-line .sym{color:var(--green)}
+.hero-name{font-size:clamp(32px,6vw,52px);font-weight:800;margin:4px 0 6px;letter-spacing:-0.5px}
+.hero-role{font-size:clamp(16px,2.5vw,20px);color:var(--accent);margin:0 0 20px}
+.cursor{display:inline-block;width:9px;height:1.1em;background:var(--accent);vertical-align:text-bottom;margin-left:4px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero-meta{display:flex;flex-wrap:wrap;gap:16px;font-family:var(--sans);font-size:14px;color:var(--text-dim)}
+.hero-meta a{color:var(--text-dim);border-bottom:1px solid var(--border)}.hero-meta a:hover{color:var(--accent);border-color:var(--accent)}
+.hero-actions{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:13px;font-weight:600;padding:10px 18px;border-radius:6px;border:1px solid var(--border);cursor:pointer;transition:all .15s ease}
+.btn-primary{background:var(--accent);color:#14170f;border-color:var(--accent)}.btn-primary:hover{background:var(--accent-dim)}
+.btn-ghost{background:transparent;color:var(--text)}.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.section{padding:56px 0;border-top:1px solid var(--border)}
+.class-decl{font-family:var(--mono);font-size:clamp(15px,2vw,18px);color:var(--text-dim);margin-bottom:28px}
+.class-decl .kw{color:var(--green)}.class-decl .name{color:var(--accent);font-weight:700}
+.class-close{font-family:var(--mono);color:var(--text-dim);margin-top:28px;font-size:15px}
+.section-body{padding-left:20px;border-left:2px solid var(--border)}
+@media(max-width:560px){.section-body{padding-left:14px}}
+.about-text{font-size:16px;max-width:62ch}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.skill-group h3{font-family:var(--mono);font-size:13px;color:var(--green);margin:0 0 12px}
+.skill-group h3::before{content:'// ';color:var(--text-dim)}
+.tag-list{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.tag{font-family:var(--mono);font-size:12.5px;background:var(--bg-card);border:1px solid var(--border);color:var(--text);padding:5px 10px;border-radius:5px}
+.project-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:24px;margin-bottom:20px;transition:border-color .15s ease,transform .15s ease}
+.project-card:hover{border-color:var(--accent-dim);transform:translateY(-2px)}
+.project-title{font-size:18px;font-weight:700;margin:0 0 8px}.project-title a{color:inherit}.project-title a:hover{color:var(--accent)}
+.project-desc{color:var(--text-dim);font-size:14.5px;margin:0 0 14px}
+.project-highlights{margin:0 0 16px;padding-left:18px;font-size:14px}.project-highlights li{margin-bottom:6px}.project-highlights li::marker{color:var(--green)}
+.cert-list,.edu-list{list-style:none;margin:0;padding:0}
+.cert-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:14.5px}.cert-item:last-child{border-bottom:none}
+.check{color:var(--green);font-family:var(--mono)}
+.edu-item{padding:14px 0;border-bottom:1px solid var(--border)}.edu-item:last-child{border-bottom:none}
+.edu-row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.edu-degree{font-weight:700}.edu-period{font-family:var(--mono);font-size:12.5px;color:var(--text-dim);white-space:nowrap}
+.edu-school{color:var(--text-dim);font-size:14px;margin-top:2px}
+.edu-detail{font-family:var(--mono);font-size:12.5px;color:var(--green);margin-top:4px}
+.contact-form{display:flex;flex-direction:column;gap:14px;max-width:480px}
+.field label{display:block;font-family:var(--mono);font-size:12.5px;color:var(--text-dim);margin-bottom:6px}
+.field input,.field textarea{width:100%;background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:10px 12px;color:var(--text);font-family:var(--sans);font-size:14px}
+.field input:focus,.field textarea:focus{outline:2px solid var(--accent);outline-offset:2px}
+.form-status{font-family:var(--mono);font-size:13px;padding:10px 12px;border-radius:6px;border:1px solid var(--border)}
+.form-status.ok{color:var(--green);border-color:var(--green)}
+.footer{border-top:1px solid var(--border);padding:28px 0 40px;font-family:var(--mono);font-size:12.5px;color:var(--text-dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.modal-overlay{position:fixed;inset:0;background:rgba(15,19,16,.7);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px}
+.modal-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:28px;max-width:380px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.modal-title{font-family:var(--mono);font-weight:700;color:var(--accent);font-size:15px;margin:0 0 10px}
+.modal-message{color:var(--text);font-size:14.5px;margin:0 0 20px}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+const { useState } = React;
+
+const profile = {
+  name: 'Satmanyu Kumar',
+  title: 'Java Developer',
+  email: 'satmanyukumar123@gmail.com',
+  phone: '9608601647',
+  location: 'Uttar Pradesh, India',
+  github: 'https://github.com/',
+  linkedin: 'https://linkedin.com/',
+  skills: {
+    Languages: ['Advance Java', 'Core Java', 'Python (Basic)', 'HTML, CSS, JavaScript', 'Data Structures & Algorithms (Java)', 'SQL'],
+    Tools: ['Spring Tool Suite (STS)', 'IntelliJ IDEA', 'Eclipse', 'Visual Studio Code', 'Arduino IDE'],
+    Database: ['MySQL', 'PostgreSQL'],
+  },
+  education: [
+    { degree: 'B.Tech CSE (IoT)', school: 'Noida Institute of Engineering and Technology', period: 'Aug 2022 - Aug 2025', detail: 'CGPA: 7.24' },
+    { degree: 'Diploma (Civil)', school: 'Government Polytechnic Raghopur, Supaul', period: '2022', detail: 'CGPA: 8' },
+    { degree: 'Class 10', school: 'GOVT+2 High School Birpur, Supaul', period: '2019', detail: 'Percentage: 83%' },
+  ],
+  certifications: [
+    'INCAPP Certification: Core Java',
+    'INCAPP Certification: Data Structures and Algorithms (Java)',
+    'INCAPP Certification: Advanced Java with Spring Boot',
+  ],
+};
+
+const projects = [
+  {
+    title: 'Text-Based Neural Knowledge Management System',
+    description: "A document intelligence app that lets users upload PDFs and ask questions about their content, answered by an integrated AI model.",
+    highlights: [
+      'User registration, authentication & authorization with JWT and Spring Security',
+      'PDF upload with text extraction via Apache Tika',
+      'AI-powered Q&A over uploaded document content using Spring AI',
+      'Document ownership validation and PDF preview',
+      'Layered architecture: Controller, Service, Repository',
+    ],
+    tech: ['Java', 'Spring Boot', 'Spring Security', 'JWT', 'Thymeleaf', 'MySQL', 'Apache Tika', 'Spring AI'],
+  },
+  {
+    title: 'Real-Time Chat Room Application',
+    description: 'A real-time chat room enabling seamless, bi-directional communication between users.',
+    highlights: ['Bi-directional messaging with WebSocket', 'Built on Spring Boot for the messaging backend'],
+    tech: ['Java', 'Spring Boot', 'WebSocket'],
+  },
+];
+
+function Navbar() {
+  return (
+    <nav className="nav"><div className="nav-inner">
+      <span className="nav-logo">satmanyu<span>.dev</span></span>
+      <ul className="nav-links">
+        <li><a href="#about">about</a></li><li><a href="#skills">skills</a></li>
+        <li><a href="#projects">projects</a></li><li><a href="#education">education</a></li>
+        <li><a href="#contact">contact</a></li>
+      </ul>
+    </div></nav>
+  );
+}
+
+function Hero() {
+  return (
+    <header className="hero wrap">
+      <div className="terminal">
+        <div className="terminal-bar"><span className="dot"/><span className="dot"/><span className="dot"/>
+          <span className="terminal-title">~/portfolio — zsh</span></div>
+        <div className="terminal-body">
+          <p className="prompt-line"><span className="sym">$</span> whoami</p>
+          <h1 className="hero-name">{profile.name}</h1>
+          <p className="hero-role">{profile.title}<span className="cursor"/></p>
+          <div className="hero-meta">
+            <a href={`mailto:${profile.email}`}>{profile.email}</a>
+            <span>{profile.phone}</span><span>{profile.location}</span>
+            <a href={profile.github} target="_blank">GitHub</a>
+            <a href={profile.linkedin} target="_blank">LinkedIn</a>
+          </div>
+          <div className="hero-actions">
+            <a className="btn btn-primary" href="#projects">view projects</a>
+            <a className="btn btn-ghost" href="#contact">get in touch</a>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function Section({ name, extra, children }) {
+  return (
+    <section id={name.toLowerCase()} className="section wrap">
+      <p className="class-decl"><span className="kw">public class</span> <span className="name">{name}</span>{extra ? ` ${extra}` : ''} {'{'}</p>
+      <div className="section-body">{children}</div>
+      <p className="class-close">{'}'}</p>
+    </section>
+  );
+}
+
+function About() {
+  return (
+    <Section name="About">
+      <p className="about-text">I'm a Java developer who enjoys building complete, working systems end to end — from REST APIs and database design in Spring Boot to the interfaces people actually use. I'm currently sharpening my fundamentals in Core & Advanced Java, data structures, and Spring, while shipping real projects like a document Q&A system and a real-time chat app.</p>
+    </Section>
+  );
+}
+
+function Skills() {
+  return (
+    <Section name="Skills">
+      <div className="skills-grid">
+        {Object.entries(profile.skills).map(([group, items]) => (
+          <div className="skill-group" key={group}><h3>{group}</h3>
+            <ul className="tag-list">{items.map(i => <li className="tag" key={i}>{i}</li>)}</ul>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function Projects() {
+  return (
+    <Section name="Projects" extra="extends Portfolio">
+      {projects.map(p => (
+        <article className="project-card" key={p.title}>
+          <h3 className="project-title">{p.title}</h3>
+          <p className="project-desc">{p.description}</p>
+          <ul className="project-highlights">{p.highlights.map(h => <li key={h}>{h}</li>)}</ul>
+          <ul className="tag-list">{p.tech.map(t => <li className="tag" key={t}>{t}</li>)}</ul>
+        </article>
+      ))}
+    </Section>
+  );
+}
+
+function Certifications() {
+  return (
+    <Section name="Certifications">
+      <ul className="cert-list">{profile.certifications.map(c => (
+        <li className="cert-item" key={c}><span className="check">✓</span><span>{c}</span></li>
+      ))}</ul>
+    </Section>
+  );
+}
+
+function Education() {
+  return (
+    <Section name="Education">
+      <ul className="edu-list">{profile.education.map(e => (
+        <li className="edu-item" key={e.degree}>
+          <div className="edu-row"><span className="edu-degree">{e.degree}</span><span className="edu-period">{e.period}</span></div>
+          <div className="edu-school">{e.school}</div>
+          <div className="edu-detail">{e.detail}</div>
+        </li>
+      ))}</ul>
+    </Section>
+  );
+}
+
+const FLAGGED_WORDS = ['idiot', 'stupid', 'nonsense', 'shut up'];
+const MODERATION_MESSAGE = "Let's keep it respectful here 🙂 Feel free to rewrite your message and send it again.";
+function containsAbusiveContent(text) {
+  if (!text) return false;
+  const lower = text.toLowerCase();
+  return FLAGGED_WORDS.some(w => w.includes(' ') ? lower.includes(w) : new RegExp(`\\b${w}\\b`, 'i').test(lower));
+}
+
+function Modal({ open, title, message, onClose }) {
+  if (!open) return null;
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-box" onClick={e => e.stopPropagation()}>
+        <p className="modal-title">{title}</p>
+        <p className="modal-message">{message}</p>
+        <button className="btn btn-primary" onClick={onClose}>okay</button>
+      </div>
+    </div>
+  );
+}
+
+function Contact() {
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState(null);
+  const [showModeration, setShowModeration] = useState(false);
+
+  const submit = (e) => {
+    e.preventDefault();
+    if (containsAbusiveContent(form.message)) {
+      setShowModeration(true);
+      return;
+    }
+    // Preview only — the real app posts this to the Spring Boot /api/contact endpoint.
+    setStatus({ ok: true, message: "Thanks! (This preview doesn't send — the real app posts to your Spring Boot API.)" });
+    setForm({ name: '', email: '', message: '' });
+  };
+
+  return (
+    <Section name="Contact">
+      <p className="about-text" style={{marginBottom: 20}}>
+        Have a role, project, or just want to talk Java? Drop a message below, or reach me directly at <a href={`mailto:${profile.email}`}>{profile.email}</a>.
+      </p>
+      <form className="contact-form" onSubmit={submit}>
+        <div className="field"><label>name</label>
+          <input required value={form.name} onChange={e => setForm({...form, name: e.target.value})} /></div>
+        <div className="field"><label>email</label>
+          <input type="email" required value={form.email} onChange={e => setForm({...form, email: e.target.value})} /></div>
+        <div className="field"><label>message</label>
+          <textarea rows="5" required value={form.message} onChange={e => setForm({...form, message: e.target.value})} /></div>
+        <button className="btn btn-primary" type="submit">send message</button>
+        {status && <p className="form-status ok">{status.message}</p>}
+      </form>
+      <Modal open={showModeration} title="Hold on" message={MODERATION_MESSAGE} onClose={() => setShowModeration(false)} />
+    </Section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="footer wrap">
+      <span>© {new Date().getFullYear()} Satmanyu Kumar</span>
+      <span>built with Java &amp; React</span>
+    </footer>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <Navbar /><Hero />
+      <main><About /><Skills /><Projects /><Certifications /><Education /><Contact /></main>
+      <Footer />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
