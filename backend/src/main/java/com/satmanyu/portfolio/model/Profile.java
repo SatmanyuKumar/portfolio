@@ -3,6 +3,9 @@ package com.satmanyu.portfolio.model;
 import java.util.List;
 import java.util.Map;
 
+import lombok.Data;
+
+@Data
 public class Profile {
     private String name;
     private String title;
@@ -30,14 +33,14 @@ public class Profile {
         this.certifications = certifications;
     }
 
-    public String getName() { return name; }
-    public String getTitle() { return title; }
-    public String getEmail() { return email; }
-    public String getPhone() { return phone; }
-    public String getLocation() { return location; }
-    public String getGithub() { return github; }
-    public String getLinkedin() { return linkedin; }
-    public Map<String, List<String>> getSkills() { return skills; }
-    public List<Map<String, String>> getEducation() { return education; }
-    public List<String> getCertifications() { return certifications; }
+//    public String getName() { return name; }
+//    public String getTitle() { return title; }
+//    public String getEmail() { return email; }
+//    public String getPhone() { return phone; }
+//    public String getLocation() { return location; }
+//    public String getGithub() { return github; }
+//    public String getLinkedin() { return linkedin; }
+//    public Map<String, List<String>> getSkills() { return skills; }
+//    public List<Map<String, String>> getEducation() { return education; }
+//    public List<String> getCertifications() { return certifications; }
 }
