@@ -1,6 +1,7 @@
 import { fallbackProfile, fallbackProjects } from './data.js';
 
-const BASE_URL = 'http://localhost:8080/api';
+// const BASE_URL = 'http://localhost:8080/api';
+const BASE_URL = 'https://portfolio-xg58.onrender.com/api';
 
 async function safeFetch(path, fallback) {
   try {
