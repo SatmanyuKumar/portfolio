@@ -2,7 +2,7 @@ export default function Navbar() {
   return (
     <nav className="nav">
       <div className="nav-inner">
-        <span className="nav-logo">satmanyu<span>.dev</span></span>
+        {/* <span className="nav-logo">satmanyu<span>.dev</span></span> */}
         <ul className="nav-links">
           <li><a href="#about">about</a></li>
           <li><a href="#skills">skills</a></li>
