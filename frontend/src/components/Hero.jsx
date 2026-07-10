@@ -1,4 +1,4 @@
-export default function Hero({ profile }) {
+
   export default function Hero({ profile }) {
   const EMAIL = 'satmanyukumar123@gmail.com';
   const GITHUB = 'https://github.com/SatmanyuKumar';
